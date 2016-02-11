@@ -14,6 +14,7 @@ class TechlahomaAuth::UserSessionsController < TechlahomaAuth::ApplicationContro
       user.id = omniauth['uid']
     end
     user.email = omniauth['info']['email'] if user.respond_to?(:email)
+    user.email = omniauth['info']['name']  if user.respond_to?(:name)
     user.save
 
     session[:user_id] = user.id
