@@ -1,8 +1,6 @@
 class TechlahomaAuth::UserSessionsController < TechlahomaAuth::ApplicationController
   before_filter :login_required, :only => [ :destroy ]
 
-  respond_to :html
-
   # omniauth callback method
   def create
     omniauth = env['omniauth.auth']
@@ -18,7 +16,6 @@ class TechlahomaAuth::UserSessionsController < TechlahomaAuth::ApplicationContro
     user.save
 
     session[:user_id] = user.id
-
     flash[:notice] = "Successfully logged in"
     redirect_to request.env['omniauth.origin'] || root_path
   end
