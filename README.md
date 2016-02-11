@@ -1,9 +1,9 @@
-# SoAuth
+# TechlahomaAuth
 
 A Rails engine that makes it easy to delegate authentication for a Rails
 site to
-[SoAuthProvider](https://github.com/jagthedrummer/so_auth_provider).
-See the [SoAuthClient](https://github.com/jagthedrummer/so_auth_client)
+[TechlahomaAuthProvider](https://github.com/jagthedrummer/techlahoma_auth_provider).
+See the [TechlahomaAuthClient](https://github.com/jagthedrummer/techlahoma_auth_client)
 project for an example of using this gem.
 
 See [http://www.octolabs.com/so-auth](http://www.octolabs.com/so-auth)
@@ -13,10 +13,10 @@ for more details.
 Usage
 ==============
 
-## Add `so_auth` to the `Gemfile`
+## Add `techlahoma_auth` to the `Gemfile`
 
 ```ruby
-gem 'so_auth'
+gem 'techlahoma_auth'
 ```
 
 ## Generate an initializer
@@ -24,7 +24,7 @@ gem 'so_auth'
 Run this command
 
 ```bash
-rails generate so_auth:install
+rails generate techlahoma_auth:install
 ```
 
 This will create the following files
@@ -33,9 +33,9 @@ This will create the following files
 config/initializers/omniauth.rb
 ```
 
-## Create a new application in your `SoAuthProvider` instance
+## Create a new application in your `TechlahomaAuthProvider` instance
 
-Go to the `/oauth/applications` endpoint on the `SoAuthProvider`
+Go to the `/oauth/applications` endpoint on the `TechlahomaAuthProvider`
 installation that you want to integrate with.  For development this will
 probably be `http://localhost:3000/oauth/applications`.
 
@@ -80,10 +80,10 @@ rake db:migrate; rake db:test:prepare
 ## Update `ApplicationController`
 
 Change your `ApplicationController` to inherit from
-`SoAuth::ApplicationController`. The first line should look like this.
+`TechlahomaAuth::ApplicationController`. The first line should look like this.
 
 ```ruby
-class ApplicationController < SoAuth::ApplicationController
+class ApplicationController < TechlahomaAuth::ApplicationController
 ```
 
 ## Protect some stuff in a controller
@@ -100,7 +100,7 @@ before_filter :login_required
 
 ## OPTIONAL : Change the default port of your new project
 
-Since we're relying on `so_auth_provider` to provide authentication, we need
+Since we're relying on `techlahoma_auth_provider` to provide authentication, we need
 to run our new project on a different port in development.  Open up `config/boot.rb`
 and add this to the bottom of the file.  If you want to use a port other
 than `3001` just change the port as appropriate.

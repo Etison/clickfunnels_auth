@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    so_auth (0.0.2)
+    techlahoma_auth (0.0.2)
       omniauth (~> 1.2.1)
       omniauth-oauth2 (~> 1.1.2)
       rails (>= 4.0.4)
@@ -147,5 +147,8 @@ DEPENDENCIES
   cucumber-rails (~> 1.4.0)
   database_cleaner (~> 1.2.0)
   rspec-rails (~> 2.14.2)
-  so_auth!
   sqlite3
+  techlahoma_auth!
+
+BUNDLED WITH
+   1.11.2

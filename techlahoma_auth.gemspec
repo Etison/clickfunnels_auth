@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "so_auth/version"
+require "techlahoma_auth/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "so_auth"
-  s.version     = SoAuth::VERSION
+  s.name        = "techlahoma_auth"
+  s.version     = TechlahomaAuth::VERSION
   s.authors     = ["Jeremy Green"]
   s.email       = ["jeremy@octolabs.com"]
-  s.homepage    = "https://github.com/jagthedrummer/so_auth"
-  s.summary     = "A gem that allows a Rails app to be an client of SoAuthProvider."
-  s.description = "A gem that allows a Rails app to be an client of SoAuthProvider."
+  s.homepage    = "https://github.com/jagthedrummer/techlahoma_auth"
+  s.summary     = "A gem that allows a Rails app to be an client of TechlahomaAuthProvider."
+  s.description = "A gem that allows a Rails app to be an client of TechlahomaAuthProvider."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 

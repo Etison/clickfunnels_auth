@@ -1,5 +1,5 @@
 Description:
-    Generate config and initializer for a client of SoAuthProvider.
+    Generate config and initializer for a client of TechlahomaAuthProvider.
 
 Example:
     rails generate so_auth:install

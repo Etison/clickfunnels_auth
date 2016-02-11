@@ -1,4 +1,4 @@
-class SoAuth::UserSessionsController < SoAuth::ApplicationController
+class TechlahomaAuth::UserSessionsController < TechlahomaAuth::ApplicationController
   before_filter :login_required, :only => [ :destroy ]
 
   respond_to :html
