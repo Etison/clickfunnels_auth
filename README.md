@@ -1,14 +1,12 @@
 # TechlahomaAuth
 
-A Rails engine that makes it easy to delegate authentication for a Rails
-site to
-[TechlahomaAuthProvider](https://github.com/jagthedrummer/techlahoma_auth_provider).
-See the [TechlahomaAuthClient](https://github.com/jagthedrummer/techlahoma_auth_client)
+A Rails engine that makes it easy to delegate authentication for a Rails site to
+[Techlahoma](https://github.com/techlahoma/techlahomar).
+See the [Techlahoma Donations](https://github.com/techlahoma_donations)
 project for an example of using this gem.
 
-See [http://www.octolabs.com/so-auth](http://www.octolabs.com/so-auth)
+This is based on the SoAuth projects. See [http://www.octolabs.com/so-auth](http://www.octolabs.com/so-auth)
 for more details.
-
 
 Usage
 ==============
@@ -35,7 +33,7 @@ config/initializers/omniauth.rb
 
 ## Create a new application in your `TechlahomaAuthProvider` instance
 
-Go to the `/oauth/applications` endpoint on the `TechlahomaAuthProvider`
+Go to the `/oauth/applications` endpoint on the `Techlahoma`
 installation that you want to integrate with.  For development this will
 probably be `http://localhost:3000/oauth/applications`.
 
@@ -44,7 +42,7 @@ Create a new application, and set the callback URL to
 plan to run your client app on a different port. (See the optional
 section below.)
 
-After creating the app make note of the Application Id and the 
+After creating the app make note of the Application Id and the
 Secret.
 
 ## Set some environment variables for your client
@@ -61,7 +59,7 @@ AUTH_PROVIDER_ME_URL=/oauth/me.json
 ```
 
 Be sure to use the Application Id you got in the last step as
-`AUTH_APPLICATION_APPLICATION_ID` and the Secret as `AUTH_APPLICATION_SECRET`.
+`AUTH_PROVIDER_APPLICATION_ID` and the Secret as `AUTH_PROVIDER_SECRET`.
 
 ## Create a `User` model
 
@@ -94,10 +92,6 @@ Use a `before_filter` to protect some controller actions.
 before_filter :login_required
 ```
 
-
-
-
-
 ## OPTIONAL : Change the default port of your new project
 
 Since we're relying on `techlahoma_auth_provider` to provide authentication, we need
@@ -113,7 +107,7 @@ module Rails
     alias :default_options_alias :default_options
     def default_options
       default_options_alias.merge!(:Port => 3001)
-    end    
+    end
   end
 end
 ```
