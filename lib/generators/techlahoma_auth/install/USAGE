@@ -2,7 +2,7 @@ Description:
     Generate config and initializer for a client of TechlahomaAuthProvider.
 
 Example:
-    rails generate so_auth:install
+    rails generate techlahoma_auth:install
 
     This will create:
         config/initializers/omniauth.rb

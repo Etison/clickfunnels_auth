@@ -38,7 +38,7 @@ installation that you want to integrate with.  For development this will
 probably be `http://localhost:3000/oauth/applications`.
 
 Create a new application, and set the callback URL to
-`http://localhost:3001/auth/so/callback`. Change the port if you
+`http://localhost:3001/auth/techlahoma/callback`. Change the port if you
 plan to run your client app on a different port. (See the optional
 section below.)
 

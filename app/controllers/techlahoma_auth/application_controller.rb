@@ -11,7 +11,7 @@ module TechlahomaAuth
     end
 
     def cookie_valid?
-      cookies[:so_auth].present? && session[:user_id].present? && cookies[:so_auth].to_s == session[:user_id].to_s
+      cookies[:techlahoma_auth].present? && session[:user_id].present? && cookies[:techlahoma_auth].to_s == session[:user_id].to_s
     end
 
     def login_required
@@ -28,7 +28,7 @@ module TechlahomaAuth
     end
 
     def auth_redirect
-      observable_redirect_to "/auth/so?origin=#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+      observable_redirect_to "/auth/techlahoma?origin=#{request.protocol}#{request.host_with_port}#{request.fullpath}"
     end
 
     def current_user
