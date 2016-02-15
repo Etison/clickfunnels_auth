@@ -1,4 +1,4 @@
-class TechlahomaAuth::UserSessionsController < TechlahomaAuth::ApplicationController
+class ClickfunnelsAuth::UserSessionsController < ClickfunnelsAuth::ApplicationController
   before_filter :login_required, :only => [ :destroy ]
 
   # omniauth callback method

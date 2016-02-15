@@ -1,8 +1,8 @@
-# TechlahomaAuth
+# ClickfunnelsAuth
 
 A Rails engine that makes it easy to delegate authentication for a Rails site to
-[Techlahoma](https://github.com/techlahoma/techlahomar).
-See the [Techlahoma Donations](https://github.com/techlahoma_donations)
+[Clickfunnels](https://github.com/clickfunnels/clickfunnelsr).
+See the [Clickfunnels Donations](https://github.com/clickfunnels_donations)
 project for an example of using this gem.
 
 This is based on the SoAuth projects. See [http://www.octolabs.com/so-auth](http://www.octolabs.com/so-auth)
@@ -11,10 +11,10 @@ for more details.
 Usage
 ==============
 
-## Add `techlahoma_auth` to the `Gemfile`
+## Add `clickfunnels_auth` to the `Gemfile`
 
 ```ruby
-gem 'techlahoma_auth'
+gem 'clickfunnels_auth'
 ```
 
 ## Generate an initializer
@@ -22,7 +22,7 @@ gem 'techlahoma_auth'
 Run this command
 
 ```bash
-rails generate techlahoma_auth:install
+rails generate clickfunnels_auth:install
 ```
 
 This will create the following files
@@ -31,14 +31,14 @@ This will create the following files
 config/initializers/omniauth.rb
 ```
 
-## Create a new application in your `TechlahomaAuthProvider` instance
+## Create a new application in your main `Clickfunnels` mothership instance
 
-Go to the `/oauth/applications` endpoint on the `Techlahoma`
+Go to the `/oauth/applications` endpoint on the `Clickfunnels`
 installation that you want to integrate with.  For development this will
-probably be `http://localhost:3000/oauth/applications`.
+probably be `http://localhost:5000/oauth/applications`.
 
 Create a new application, and set the callback URL to
-`http://localhost:3001/auth/techlahoma/callback`. Change the port if you
+`http://localhost:3001/auth/clickfunnels/callback`. Change the port if you
 plan to run your client app on a different port. (See the optional
 section below.)
 
@@ -52,7 +52,7 @@ set some environment variables.  Using something like `foreman` is
 probably the best so that you can just set them in a `.env` file.
 
 ```
-AUTH_PROVIDER_URL=http://localhost:3000
+AUTH_PROVIDER_URL=http://localhost:5000
 AUTH_PROVIDER_APPLICATION_ID=1234
 AUTH_PROVIDER_SECRET=5678
 AUTH_PROVIDER_ME_URL=/oauth/me.json
@@ -78,10 +78,10 @@ rake db:migrate; rake db:test:prepare
 ## Update `ApplicationController`
 
 Change your `ApplicationController` to inherit from
-`TechlahomaAuth::ApplicationController`. The first line should look like this.
+`ClickfunnelsAuth::ApplicationController`. The first line should look like this.
 
 ```ruby
-class ApplicationController < TechlahomaAuth::ApplicationController
+class ApplicationController < ClickfunnelsAuth::ApplicationController
 ```
 
 ## Protect some stuff in a controller
@@ -94,7 +94,7 @@ before_filter :login_required
 
 ## OPTIONAL : Change the default port of your new project
 
-Since we're relying on `techlahoma_auth_provider` to provide authentication, we need
+Since we're relying on `clickfunnels_auth_provider` to provide authentication, we need
 to run our new project on a different port in development.  Open up `config/boot.rb`
 and add this to the bottom of the file.  If you want to use a port other
 than `3001` just change the port as appropriate.

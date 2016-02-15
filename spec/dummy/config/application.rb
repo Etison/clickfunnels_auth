@@ -8,7 +8,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "techlahoma_auth"
+require "clickfunnels_auth"
 
 module Dummy
   class Application < Rails::Application

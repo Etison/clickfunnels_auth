@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "techlahoma_auth/version"
+require "clickfunnels_auth/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "techlahoma_auth"
-  s.version     = TechlahomaAuth::VERSION
+  s.name        = "clickfunnels_auth"
+  s.version     = ClickfunnelsAuth::VERSION
   s.authors     = ["Jeremy Green"]
   s.email       = ["jeremy@octolabs.com"]
-  s.homepage    = "https://github.com/jagthedrummer/techlahoma_auth"
-  s.summary     = "A gem that allows a Rails app to be an client of TechlahomaAuthProvider."
-  s.description = "A gem that allows a Rails app to be an client of TechlahomaAuthProvider."
+  s.homepage    = "https://github.com/SuccessEtcllc/clickfunnels_auth"
+  s.summary     = "A gem that allows a Rails app to be an OAuth client of Clickfunnels."
+  s.description = "A gem that allows a Rails app to be an OAuth client of Clickfunnels."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 

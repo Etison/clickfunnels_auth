@@ -1,4 +1,4 @@
-class StuffController < TechlahomaAuth::ApplicationController
+class StuffController < ClickfunnelsAuth::ApplicationController
 
   before_filter :login_required, :only => :private
 

@@ -1,4 +1,4 @@
-module TechlahomaAuth
+module ClickfunnelsAuth
   class ApplicationController < ActionController::Base
 
     protect_from_forgery
@@ -11,7 +11,7 @@ module TechlahomaAuth
     end
 
     def cookie_valid?
-      cookies[:techlahoma_auth].present? && session[:user_id].present? && cookies[:techlahoma_auth].to_s == session[:user_id].to_s
+      cookies[:clickfunnels_auth].present? && session[:user_id].present? && cookies[:clickfunnels_auth].to_s == session[:user_id].to_s
     end
 
     def login_required
@@ -28,7 +28,7 @@ module TechlahomaAuth
     end
 
     def auth_redirect
-      observable_redirect_to "/auth/techlahoma?origin=#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+      observable_redirect_to "/auth/clickfunnels?origin=#{request.protocol}#{request.host_with_port}#{request.fullpath}"
     end
 
     def current_user

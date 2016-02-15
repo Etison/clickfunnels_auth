@@ -1,7 +1,7 @@
 require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
-    class Techlahoma < OmniAuth::Strategies::OAuth2
+    class Clickfunnels < OmniAuth::Strategies::OAuth2
 
       CUSTOM_PROVIDER_URL = ENV['AUTH_PROVIDER_URL'] || "http://custom-provider-goes-here"
       CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/oauth/me.json"
