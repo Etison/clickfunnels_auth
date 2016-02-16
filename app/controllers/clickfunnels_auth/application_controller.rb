@@ -3,12 +3,12 @@ module ClickfunnelsAuth
 
     protect_from_forgery
 
-    before_filter :check_cookie
-    def check_cookie
-      if !cookie_valid?
-        session[:user_id] = nil
-      end
-    end
+    #before_filter :check_cookie
+    #def check_cookie
+      #if !cookie_valid?
+        #session[:user_id] = nil
+      #end
+    #end
 
     def cookie_valid?
       cookies[:clickfunnels_auth].present? && session[:user_id].present? && cookies[:clickfunnels_auth].to_s == session[:user_id].to_s

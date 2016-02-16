@@ -55,7 +55,7 @@ probably the best so that you can just set them in a `.env` file.
 AUTH_PROVIDER_URL=http://localhost:5000
 AUTH_PROVIDER_APPLICATION_ID=1234
 AUTH_PROVIDER_SECRET=5678
-AUTH_PROVIDER_ME_URL=/oauth/me.json
+AUTH_PROVIDER_ME_URL=/api/me.json
 ```
 
 Be sure to use the Application Id you got in the last step as
