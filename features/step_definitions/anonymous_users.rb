@@ -12,6 +12,7 @@ end
 
 Then(/^he should be redirected into the oauth dance$/) do
   page.should have_content "If this wasn't an integration test, you'd be redirected to:"
-  page.should have_content "/auth/clickfunnels?origin=http://www.example.com/stuff/private"
+  #page.should have_content "/auth/clickfunnels?origin=http://www.example.com/stuff/private"
+  page.should have_content "/auth/clickfunnels"
 end
 
