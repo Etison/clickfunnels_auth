@@ -1,9 +1,9 @@
 class ClickfunnelsAuth::UserSessionsController < ClickfunnelsAuth::ApplicationController
-  before_filter :login_required, :only => [ :destroy ]
+  before_action :login_required, :only => [ :destroy ]
 
   # omniauth callback method
   def create
-    omniauth = env['omniauth.auth']
+    omniauth = request.env['omniauth.auth']
 
     user = User.find_by_id(omniauth['uid'])
     if not user
