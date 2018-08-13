@@ -75,21 +75,13 @@ Then be sure to run migrations.
 rake db:migrate; rake db:test:prepare
 ```
 
-## Update `ApplicationController`
-
-Change your `ApplicationController` to inherit from
-`ClickfunnelsAuth::ApplicationController`. The first line should look like this.
-
-```ruby
-class ApplicationController < ClickfunnelsAuth::ApplicationController
-```
-
 ## Protect some stuff in a controller
 
-Use a `before_filter` to protect some controller actions.
+Include the helper and then use a `before_action` to protect some controller actions.
 
 ```ruby
-before_filter :login_required
+include ClickfunnelsAuth::Helper
+before_action :login_required
 ```
 
 ## OPTIONAL : Change the default port of your new project
