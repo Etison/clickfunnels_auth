@@ -27,7 +27,7 @@ module ClickfunnelsAuth
     end
 
     def auth_redirect
-      origin = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+      #origin = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
       # Currently Doorkeeper has a bug when the redirct contains query params
       #observable_redirect_to "/auth/clickfunnels?origin=#{CGI.escape(origin)}"
       observable_redirect_to "/auth/clickfunnels"
@@ -36,6 +36,29 @@ module ClickfunnelsAuth
     def current_user
       return nil unless session[:user_id]
       @current_user ||= User.find_by_id(session[:user_id])
+      token = @current_user.access_tokens.first
+      puts "token = #{token}"
+      puts "token.expired? = #{token.try :expired?}"
+      if token.blank?
+        puts "*******************************************************"
+        puts "we had a user, but they did not have a token!"
+        puts "*******************************************************"
+        session[:user_id] = nil
+        return nil
+      elsif token.expired?
+        begin
+          puts "*******************************************************"
+          puts "aobut to refresh the token!"
+          puts "*******************************************************"
+          token.refresh!
+        rescue OAuth2::Error => e
+          puts "caught error #{e}"
+          token.destroy!
+          session[:user_id] = nil
+          return nil
+        end
+      end
+      return @current_user
     end
 
     def signed_in?
