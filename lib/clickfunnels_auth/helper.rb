@@ -27,9 +27,11 @@ module ClickfunnelsAuth
     end
 
     def auth_redirect
-      #origin = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
-      # Currently Doorkeeper has a bug when the redirct contains query params
+      origin = "#{request.protocol}#{request.host_with_port}#{request.fullpath}"
+      # Currently Doorkeeper has a bug when the redirct contains query params, so for now
+      # we'll put the origin in the session instead of the redirect url.
       #observable_redirect_to "/auth/clickfunnels?origin=#{CGI.escape(origin)}"
+      session['origin'] = origin
       observable_redirect_to "/auth/clickfunnels"
     end
 
