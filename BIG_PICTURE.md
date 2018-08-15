@@ -169,4 +169,14 @@ never pro-actively sign out? (Currently set to 2 weeks on `mothership`.)
   cron task to delete any access/refresh tokens that are past the
   `expires_at` time by whatever interval we want.
 
+## Fake authentication for easier local development and/or review apps
 
+By setting the ENV var `ENABLE_FAKE_AUTH=true` you can enable
+`clickfunnels_auth` to go into "local only" mode. Which will make it not
+depend on doing the OAuth dance and token exchange with
+`clickfunnels-login`.
+
+With that env var set, any request to a protected resource will redirect
+you to `/fake_auth` where you'll see a list of users that have been
+previously authenticated/created in the current system. You can click
+the "become so-and-so" button to sign in to the client app as that user.
