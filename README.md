@@ -75,12 +75,20 @@ Then be sure to run migrations.
 rake db:migrate; rake db:test:prepare
 ```
 
+## Modify your `User` model
+
+Add this line:
+
+```
+include ClickfunnelsAuth::UserHelper
+```
+
 ## Protect some stuff in a controller
 
 Include the helper and then use a `before_action` to protect some controller actions.
 
 ```ruby
-include ClickfunnelsAuth::Helper
+include ClickfunnelsAuth::ControllerHelper
 before_action :login_required
 ```
 
