@@ -32,7 +32,11 @@ module ClickfunnelsAuth
       # we'll put the origin in the session instead of the redirect url.
       #observable_redirect_to "/auth/clickfunnels?origin=#{CGI.escape(origin)}"
       session['origin'] = origin
-      observable_redirect_to "/auth/clickfunnels"
+      if ENV['ENABLE_FAKE_AUTH'] == 'true'
+        observable_redirect_to "/fake_auth"
+      else
+        observable_redirect_to "/auth/clickfunnels"
+      end
     end
 
     def current_user
