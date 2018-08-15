@@ -1,5 +1,5 @@
 module ClickfunnelsAuth
-  module Helper
+  module ControllerHelper
 
     extend ActiveSupport::Concern
 
