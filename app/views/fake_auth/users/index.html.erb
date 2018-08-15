@@ -1,0 +1,8 @@
+<h1>Fake Auth</h1>
+
+<% @users.each do |user| %>
+  <%= form_tag(fake_auth_become_user_path(user.id), method: "post") do %>
+    <%= hidden_field_tag(:user_id, user.id) %>
+    <%= submit_tag("Become #{user.email} (Id: #{user.id})") %>
+  <% end %>
+<% end %>
