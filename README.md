@@ -82,6 +82,18 @@ Add this line:
 include ClickfunnelsAuth::UserHelper
 ```
 
+## Generate migrations from this addon
+
+```
+rails clickfunnels_auth_engine:install:migrations
+```
+
+Then run migrations.
+
+```bash
+rake db:migrate; rake db:test:prepare
+```
+
 ## Protect some stuff in a controller
 
 Include the helper and then use a `before_action` to protect some controller actions.
