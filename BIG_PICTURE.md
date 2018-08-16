@@ -180,3 +180,21 @@ With that env var set, any request to a protected resource will redirect
 you to `/fake_auth` where you'll see a list of users that have been
 previously authenticated/created in the current system. You can click
 the "become so-and-so" button to sign in to the client app as that user.
+
+
+## Outstanding questions
+
+1) How do we handle session and token expiry interactions?
+    * If a session on `clickfunnels-login` expires should tokens issued
+      to that user also expire at that time?
+
+2) If a session on `clickfunnels-login` is "lost" by a user deleting
+  cookies, what happens?
+    * We don't have a way to detect this, so maybe the best we can do is
+      to revoke any existing tokens when they log in again?
+
+3) Is there any reason that a user would need to have multiple tokens
+  active at one time?
+    * Since they tokens are only stored on other servers, and not in the
+      browser or other remote client, I _think_ there's not need for
+      a user to have multiple tokens.
