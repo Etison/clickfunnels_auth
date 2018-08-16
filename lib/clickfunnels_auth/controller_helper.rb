@@ -5,12 +5,19 @@ module ClickfunnelsAuth
 
     included do
       protect_from_forgery
+      before_action :check_cookie
       helper_method :signed_in?
       helper_method :current_user
     end
 
+    def check_cookie
+      if !cookie_valid?
+        session[:user_id] = nil
+      end
+    end
+
     def cookie_valid?
-      cookies[:clickfunnels_auth].present? && session[:user_id].present? && cookies[:clickfunnels_auth].to_s == session[:user_id].to_s
+      cookies[:clickfunnels_login_user].present? && session[:user_id].present? && cookies[:clickfunnels_login_user].to_s == session[:user_id].to_s
     end
 
     def login_required
@@ -24,6 +31,13 @@ module ClickfunnelsAuth
         format.html{ auth_redirect }
         format.json{ head :unauthorized }
       end
+    end
+
+    def is_token_older_than_current_login?(token)
+      if !cookies[:clickfunnels_login_timestamp].present?
+        return true
+      end
+      return token.updated_at < Time.at(cookies[:clickfunnels_login_timestamp].to_i)
     end
 
     def auth_redirect
@@ -51,10 +65,12 @@ module ClickfunnelsAuth
         puts "*******************************************************"
         session[:user_id] = nil
         return nil
-      elsif token.expired?
+      elsif token.expired? || is_token_older_than_current_login?(token)
         begin
           puts "*******************************************************"
           puts "aobut to refresh the token!"
+          puts "token.expired? : #{token.expired?}"
+          puts "is_token_older_than_current_login?(token) : #{is_token_older_than_current_login?(token)}"
           puts "*******************************************************"
           token.refresh!
         rescue OAuth2::Error => e
