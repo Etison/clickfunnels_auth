@@ -4,7 +4,7 @@ module OmniAuth
     class Clickfunnels < OmniAuth::Strategies::OAuth2
 
       CUSTOM_PROVIDER_URL = ENV['AUTH_PROVIDER_URL'] || "https://app.clickfunnels.com"
-      CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/oauth/me.json"
+      CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/api/attributes/me.json"
 
       option :client_options, {
         :site =>  CUSTOM_PROVIDER_URL,
@@ -19,7 +19,8 @@ module OmniAuth
       info do
         {
           :email => raw_info['email'],
-          :admin => raw_info['admin']
+          :admin => raw_info['admin'],
+          :member_level => raw_info['funnelflix_member_level']
         }
       end
 
