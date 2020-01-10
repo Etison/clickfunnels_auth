@@ -3,7 +3,7 @@ module OmniAuth
   module Strategies
     class Clickfunnels < OmniAuth::Strategies::OAuth2
 
-      CUSTOM_PROVIDER_URL = ENV['AUTH_PROVIDER_URL'] || "http://custom-provider-goes-here"
+      CUSTOM_PROVIDER_URL = ENV['AUTH_PROVIDER_URL'] || "https://app.clickfunnels.com"
       CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/oauth/me.json"
 
       option :client_options, {
