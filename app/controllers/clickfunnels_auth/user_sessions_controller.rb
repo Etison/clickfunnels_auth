@@ -24,7 +24,7 @@ class ClickfunnelsAuth::UserSessionsController < ClickfunnelsAuth::ApplicationCo
     user.access_tokens.create!({
       token: omniauth['credentials']['token'],
       refresh_token: omniauth['credentials']['refresh_token'],
-      expires_at: Time.at(omniauth['credentials']['expires_at'])
+      expires_at: omniauth['credentials']['expires_at'] ? Time.at(omniauth['credentials']['expires_at']) : omniauth['credentials']['expires_at']
     })
 
     session[:user_id] = user.id
