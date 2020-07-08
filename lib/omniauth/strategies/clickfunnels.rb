@@ -4,7 +4,7 @@ module OmniAuth
     class Clickfunnels < OmniAuth::Strategies::OAuth2
 
       CUSTOM_PROVIDER_URL = ENV['AUTH_PROVIDER_URL'] || "http://custom-provider-goes-here"
-      CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/oauth/me.json"
+      CUSTOM_PROVIDER_ME_URL = ENV['AUTH_PROVIDER_ME_URL'] || "/api/attributes/me.json"
 
       option :client_options, {
         :site =>  CUSTOM_PROVIDER_URL,
@@ -13,13 +13,14 @@ module OmniAuth
       }
 
       uid {
-        raw_info['id'] 
+        raw_info['id']
       }
 
       info do
         {
           :email => raw_info['email'],
-          :admin => raw_info['admin']
+          :admin => raw_info['admin'],
+          :member_level => raw_info['funnelflix_member_level']
         }
       end
 
@@ -34,6 +35,13 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get(CUSTOM_PROVIDER_ME_URL).parsed
+      end
+
+      # Omniauth-oauth2 > 1.3 breaks the callback url with extra parameter options
+      # https://github.com/omniauth/omniauth-oauth2/issues/81
+      # and  also https://github.com/omniauth/omniauth-oauth2/commit/26152673224aca5c3e918bcc83075dbb0659717f#commitcomment-13935631
+      def callback_url
+        full_host + script_name + callback_path
       end
     end
   end
