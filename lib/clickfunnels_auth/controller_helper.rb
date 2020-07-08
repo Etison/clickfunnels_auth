@@ -5,7 +5,8 @@ module ClickfunnelsAuth
 
     included do
       protect_from_forgery
-      before_action :check_cookie
+      # TODO : We need to have the mothership set the clickfunnels_login_user cookie
+      #before_action :check_cookie
       helper_method :signed_in?
       helper_method :current_user
     end
@@ -34,6 +35,8 @@ module ClickfunnelsAuth
     end
 
     def is_token_older_than_current_login?(token)
+      return false
+      # TODO : We need to get the mothership setting this and the clickfunnels_login_user cookie
       if !cookies[:clickfunnels_login_timestamp].present?
         return true
       end
