@@ -1,8 +1,8 @@
 # ClickfunnelsAuth
 
 A Rails engine that makes it easy to delegate authentication for a Rails site to
-[Clickfunnels Login](https://github.com/clickfunnels/clickfunnels-login).
-See the [test app](https://github.com/clickfunnels/clickfunnels-login-test)
+[Clickfunnels Login](https://github.com/etison/clickfunnels-login).
+See the [test app](https://github.com/etison/clickfunnels-login-test)
 for an example of using this gem.
 
 This is based on the SoAuth projects. See [http://www.octolabs.com/so-auth](http://www.octolabs.com/so-auth) for more details.
