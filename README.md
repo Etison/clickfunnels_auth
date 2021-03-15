@@ -138,3 +138,24 @@ unicorn -p 3001 -c ./config/unicorn.rb
 or whatever.
 
 This project rocks and uses MIT-LICENSE.
+
+
+### Publishing
+#### Credentials
+You'll need a Github personal access token with the correct scopes: `repo`, `write:packages`, `delete:packages`.
+
+You can create one here: https://github.com/settings/tokens
+
+Add this token to a local file at `~/.gem/credentials`:
+```
+:github: Bearer your_token
+```
+#### Building the gem
+Increment the gem version at `lib/rucksack-api/version.rb`, and then run `rake build`, which will create the package under `pkg`
+
+#### Pushing the gem to Github
+Run the following (with your new version) to push to github:
+
+```
+gem push --key github --host https://rubygems.pkg.github.com/Etison pkg/rucksack-api-0.1.0.gem
+```
