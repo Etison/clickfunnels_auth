@@ -21,6 +21,7 @@ module OmniAuth
           :email => raw_info['email'],
           :admin => raw_info['admin'],
           :member_level => raw_info['funnelflix_member_level'],
+          :internal_affiliate_id => raw_info['internal_affiliate_id'],
           :accounts => raw_info['accounts']
         }
       end

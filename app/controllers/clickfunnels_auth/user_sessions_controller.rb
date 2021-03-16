@@ -28,6 +28,11 @@ class ClickfunnelsAuth::UserSessionsController < ClickfunnelsAuth::ApplicationCo
     })
 
     session[:user_id] = user.id
+
+    if block_given?
+      yield omniauth
+    end
+
     flash[:notice] = "Successfully logged in"
     #redirect_to request.env['omniauth.origin'] || root_path
     redirect_to session['origin'] || root_path
