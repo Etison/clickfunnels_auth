@@ -140,22 +140,32 @@ or whatever.
 This project rocks and uses MIT-LICENSE.
 
 
-### Publishing
-#### Credentials
-You'll need a Github personal access token with the correct scopes: `repo`, `write:packages`, `delete:packages`.
+## Publishing
+We publish this gem on rubygems as it does not have anything private in it.
 
-You can create one here: https://github.com/settings/tokens
+In general the steps in this RubyGems guild are quite good. https://guides.rubygems.org/publishing/
 
-Add this token to a local file at `~/.gem/credentials`:
-```
-:github: Bearer your_token
-```
-#### Building the gem
+They are summarized in the following.
+
+### Credentials
+You'll need a to get your email added as an owner to the `clickfunnels_auth` gem
+on rubygems.  Post a note to `product-ops` and somebody will be able to help.
+
+### Building the gem
 Increment the gem version at `lib/rucksack-api/version.rb`, and then run `rake build`, which will create the package under `pkg`
 
-#### Pushing the gem to Github
+### Pushing the gem to rubygem
 Run the following (with your new version) to push to github:
 
 ```
-gem push --key github --host https://rubygems.pkg.github.com/Etison pkg/rucksack-api-0.1.0.gem
+gem push pkg/clickfunnels_auth-0.1.2.gem
 ```
+
+You should see something like:
+```
+Pushing gem to https://rubygems.org...
+Successfully registered gem: clickfunnels_auth (0.1.2)
+```
+
+###  Tag the new version
+Tagging is very simple. Just run git tag -a 0.1.2 -m "Version 0.1.2" and then git push --tags to push them up to GitHub.
